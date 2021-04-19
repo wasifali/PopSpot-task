@@ -12,7 +12,7 @@ function parseTx(data) {
 async function processTx(data) {
     const _data = parseTx(data);
     const rate = await getExchangeRate(_data.baseCurrency, _data.quoteCurrency, moment().format('YYYY-MM-DD'), _data.exchangeUrl);
-    return {..._data, converted: rate * _data.baseCurrency}
+    return {..._data, converted: rate * _data.amount}
 }
 
 module.exports = {processTx}
